@@ -14,31 +14,36 @@ export default async function Home({ searchParams }) {
   const ranking = await getRanking(categoria);
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4 md:p-10 font-sans">
+    <main className="min-h-screen bg-gray-50 px-4 pt-4 pb-10 md:px-10 font-sans">
       <div className="max-w-4xl mx-auto">
         
         {/* -- CABEÇALHO NOVO (Lado a Lado) -- */}
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 mb-0">
           
-          {/* 1. A Logo */}
-          <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
+          {/* 1. A Logo (Aumentada para w-56 no PC para ler melhor o texto) */}
+          <div className="relative w-40 h-40 md:w-65 md:h-50 shrink-0">
             <Image 
               src="/logoABR.jpg" 
               alt="Logo Roundnet Brasil" 
               fill
-              className="object-contain" // Isso garante que a logo não corte
+              className="object-contain"
               priority
             />
           </div>
 
           {/* 2. O Texto */}
           <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-green-700 mb-2 tracking-tight">
-              RANKING ROUNDNET BRASIL
+            
+            {/* Título Principal (Ajustado para ser menor: text-2xl no celular, 4xl no PC) */}
+            <h1 className="text-2xl md:text-4xl font-extrabold text-green-700 mb-2 tracking-tight">
+              RANKING NACIONAL DE ROUNDNET
             </h1>
+            
+            {/* Subtítulo (Tamanho fixo: text-lg. Se quiser maior, mude para text-xl) */}
             <p className="text-gray-600 font-medium text-lg">
               Associação Brasileira de Roundnet (ABR)
             </p>
+            
           </div>
 
         </div>
