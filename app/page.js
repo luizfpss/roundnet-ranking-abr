@@ -1,4 +1,5 @@
 import { getRanking } from '../lib/sheets';
+import Image from 'next/image';
 
 // Atualiza os dados a cada 60 segundos automaticamente
 export const revalidate = 60;
@@ -16,12 +17,30 @@ export default async function Home({ searchParams }) {
     <main className="min-h-screen bg-gray-50 p-4 md:p-10 font-sans">
       <div className="max-w-4xl mx-auto">
         
-        {/* -- CABEÇALHO -- */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-green-700 mb-2 tracking-tight">
-            RANKING ROUNDNET BRASIL
-          </h1>
-          <p className="text-gray-600 font-medium">Associação Brasileira de Roundnet (ABR)</p>
+        {/* -- CABEÇALHO NOVO (Lado a Lado) -- */}
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 mb-0">
+          
+          {/* 1. A Logo */}
+          <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
+            <Image 
+              src="/logoABR.jpg" 
+              alt="Logo Roundnet Brasil" 
+              fill
+              className="object-contain" // Isso garante que a logo não corte
+              priority
+            />
+          </div>
+
+          {/* 2. O Texto */}
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-green-700 mb-2 tracking-tight">
+              RANKING ROUNDNET BRASIL
+            </h1>
+            <p className="text-gray-600 font-medium text-lg">
+              Associação Brasileira de Roundnet (ABR)
+            </p>
+          </div>
+
         </div>
 
         {/* -- BOTÕES DE FILTRO -- */}
