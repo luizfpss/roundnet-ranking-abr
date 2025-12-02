@@ -8,7 +8,7 @@
 
 ## 📄 Sobre o Projeto
 
-Este projeto foi desenvolvido para solucionar um gargalo operacional da **Associação Brasileira de Roundnet (ABR)**. Anteriormente, o ranking nacional dos atletas era mantido em planilhas offline e divulgado manualmente, o que gerava atrasos na comunicação e dificultava a visualização por parte dos atletas e patrocinadores.
+Este projeto foi desenvolvido para solucionar um gargalo operacional da **Associação Brasileira de Roundnet (ABR)**. Anteriormente, o ranking nacional dos atletas era mantido em planilhas offline e divulgado manualmente, o que gerava atrasos e dificultava a visualização por parte dos atletas e patrocinadores.
 
 A solução desenvolvida é uma **aplicação Web Serverless** que consome dados diretamente das planilhas de gestão da ABR via API, atualizando o ranking em tempo real no site sem necessidade de input manual duplicado.
 
@@ -42,37 +42,3 @@ O sistema utiliza o padrão de **Headless CMS**, onde o Google Sheets atua como 
 5.  **Cache:** Utilizamos `revalidate` para garantir que não estouremos a cota de requisições da API, mantendo o site extremamente rápido.
 
 ---
-
-## 📦 Como rodar localmente
-
-Se você deseja clonar e rodar este projeto na sua máquina para estudos:
-
-### Pré-requisitos
-- Node.js instalado.
-- Uma conta no Google Cloud Platform (para gerar as credenciais da API Sheets).
-
-### Passo a Passo
-
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/luizfpss/roundnet-ranking-abr.git
-   cd roundnet-ranking-abr
-Instale as dependências:
-code
-Bash
-npm install
-Configure as Variáveis de Ambiente:
-Crie um arquivo .env.local na raiz do projeto e adicione as credenciais da sua Service Account do Google:
-code
-Env
-GOOGLE_SERVICE_ACCOUNT_EMAIL="seu-bot@projeto.iam.gserviceaccount.com"
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----..."
-GOOGLE_SHEET_ID="ID_DA_SUA_PLANILHA"
-Rode o servidor de desenvolvimento:
-code
-Bash
-npm run dev
-Acesse http://localhost:3000 no seu navegador.
-🤝 Autor
-Desenvolvido por Luiz Felipe Saraiva como solução tecnológica para modernização da comunidade de Roundnet no Brasil.
-GitHub
