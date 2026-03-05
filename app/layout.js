@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar"; // <--- IMPORTANTE: Importando o menu
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +14,20 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Ranking ABR - Associação Brasileira de Roundnet",
-  description: "Ranking oficial e atualizado dos atletas de Roundnet do Brasil.",
+  description: "Portal oficial da Associação Brasileira de Roundnet.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="pt-br">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        
+        {/* O MENU ENTRA AQUI: */}
+        <Navbar />
+        
+        {/* O CONTEÚDO DAS PÁGINAS (RANKING, EVENTOS...) ENTRA AQUI: */}
         {children}
+        
       </body>
     </html>
   );
