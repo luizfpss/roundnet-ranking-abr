@@ -36,7 +36,7 @@ export default function ComunidadesPage() {
       cidade: "São Paulo - SP",
       descricao: "Onde o Roundnet e a resenha se encontram. Uma das comunidades mais animadas de SP.",
       link: "https://www.instagram.com/pudimnet.sp",
-      logo: "/comunidades/pudimnet.jpg"
+      logo: "/comunidades/logopudimnet.png"
     }
   ];
 
