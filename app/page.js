@@ -20,27 +20,24 @@ export default async function Home({ searchParams }) {
         {/* -- CABEÇALHO NOVO (Lado a Lado) -- */}
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 mb-0">
           
-          {/* 1. A Logo (Aumentada para w-56 no PC para ler melhor o texto) */}
-          <div className="relative w-40 h-40 md:w-65 md:h-50 shrink-0">
-            <Image 
-              src="/logoABR.jpg" 
-              alt="Logo Roundnet Brasil" 
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <div className="relative w-20 h-20 md:w-56 md:h-56 mx-auto shrink-0 mb-2"> {/* mudei de w-28 para w-20 e mb-4 para mb-2 */}
+  <Image 
+    src="/logoABR.jpg" 
+    alt="Logo Roundnet Brasil" 
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
 
           {/* 2. O Texto */}
           <div className="text-center md:text-left">
             
-            {/* Título Principal (Ajustado para ser menor: text-2xl no celular, 4xl no PC) */}
-            <h1 className="text-2xl md:text-4xl font-extrabold text-green-700 mb-2 tracking-tight">
+            <h1 className="text-xl md:text-4xl font-black text-green-700 text-center leading-tight mb-1 px-4">
               RANKING NACIONAL DE ROUNDNET
             </h1>
             
-            {/* Subtítulo (Tamanho fixo: text-lg. Se quiser maior, mude para text-xl) */}
-            <p className="text-gray-600 font-medium text-lg">
+            <p className="text-xs md:text-lg text-gray-600 text-center mb-4">
               Associação Brasileira de Roundnet (ABR)
             </p>
             
@@ -71,44 +68,46 @@ export default async function Home({ searchParams }) {
 
         {/* -- TABELA DE DADOS -- */}
         <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider leading-normal">
-                  <th className="py-4 px-6 text-center w-24">Posição</th>
-                  <th className="py-4 px-6 text-left">Atleta</th>
-                  <th className="py-4 px-6 text-right font-bold">Pontuação</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-700 text-sm">
-                {ranking.length > 0 ? (
-                  ranking.map((atleta, index) => (
-                    <tr key={index} className="border-b border-gray-100 hover:bg-green-50 transition duration-150">
-                      <td className="py-4 px-6 text-center">
-                        <span className={`inline-block w-8 h-8 leading-8 rounded-full font-bold ${index === 0 ? 'bg-yellow-400 text-yellow-900' : index === 1 ? 'bg-gray-300 text-gray-800' : index === 2 ? 'bg-orange-300 text-orange-900' : 'text-gray-500'}`}>
-                          {atleta.posicao}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 text-left whitespace-nowrap font-semibold text-lg text-gray-800">
-                        {atleta.nome}
-                      </td>
-                      <td className="py-4 px-6 text-right font-bold text-lg text-green-600 font-mono">
-                        {atleta.pontos}
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="3" className="text-center py-12 text-gray-400">
-                      <p className="text-lg">Carregando dados...</p>
-                      <p className="text-sm mt-2">(Ou verifique se o nome da aba na planilha está correto)</p>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
+  <div className="overflow-x-auto">
+    <table className="w-full text-left border-collapse">
+      <thead>
+        <tr className="bg-gray-100 text-gray-600 uppercase text-[10px] md:text-xs tracking-wider leading-normal">
+          {/* Reduzi o padding lateral px-6 para px-2 no mobile */}
+          <th className="py-4 px-2 md:px-6 text-center w-14 md:w-24">Pos</th>
+          <th className="py-4 px-2 md:px-6 text-left">Atleta</th>
+          <th className="py-4 px-2 md:px-6 text-right font-bold">Pontos</th>
+        </tr>
+      </thead>
+      <tbody className="text-gray-700 text-sm">
+        {ranking.length > 0 ? (
+          ranking.map((atleta, index) => (
+            <tr key={index} className="border-b border-gray-100 hover:bg-green-50 transition duration-150">
+              <td className="py-3 px-2 md:px-6 text-center">
+                {/* O círculo da posição fica um pouco menor no mobile */}
+                <span className={`inline-block w-7 h-7 md:w-8 md:h-8 leading-7 md:leading-8 rounded-full font-bold text-xs md:text-base ${index === 0 ? 'bg-yellow-400 text-yellow-900' : index === 1 ? 'bg-gray-300 text-gray-800' : index === 2 ? 'bg-orange-300 text-orange-900' : 'text-gray-500'}`}>
+                  {atleta.posicao}
+                </span>
+              </td>
+              <td className="py-3 px-2 md:px-6 text-left whitespace-nowrap font-semibold text-base md:text-lg text-gray-800">
+                {atleta.nome}
+              </td>
+              <td className="py-3 px-2 md:px-6 text-right font-bold text-base md:text-lg text-green-600 font-mono">
+                {atleta.pontos}
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="3" className="text-center py-12 text-gray-400">
+              <p className="text-lg">Carregando dados...</p>
+              <p className="text-sm mt-2">(Ou verifique se o nome da aba na planilha está correto)</p>
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+</div>
         
         <p className="text-center text-gray-400 text-xs mt-8">
           Atualizado via Google Sheets API • Desenvolvido para ABR

@@ -1,6 +1,5 @@
 export default function PontuacaoPage() {
   
-  // Dados exatos da tabela que você mandou no print
   const dadosPontuacao = [
     { pos: 1, nacional: 750, grandSlam: 500, campeonato: 250, torneio: 50 },
     { pos: 2, nacional: 525, grandSlam: 350, campeonato: 175, torneio: 35 },
@@ -25,60 +24,63 @@ export default function PontuacaoPage() {
   ];
 
   return (
-    <main className="container mx-auto px-4 pb-10 max-w-5xl">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-green-700 mb-4">
+    <main className="container mx-auto px-2 md:px-4 pb-10 max-w-5xl">
+      {/* Cabeçalho mais compacto no mobile */}
+      <div className="text-center mt-4 mb-6">
+        <h1 className="text-xl md:text-4xl font-black text-green-800 mb-1 px-2 leading-tight">
           Sistema de Pontuação Oficial
         </h1>
-        <p className="text-gray-600 text-lg">
+        <p className="text-[11px] md:text-lg text-gray-600 px-4">
           Distribuição de pontos por colocação e categoria de evento.
         </p>
       </div>
 
-      {/* Container com scroll lateral para celular */}
-      <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden overflow-x-auto">
-        <table className="w-full text-center border-collapse min-w-[600px]">
-          <thead>
-            <tr className="bg-green-700 text-white uppercase text-sm font-bold tracking-wider">
-              <th className="py-4 px-4 text-left w-20">#</th>
-              <th className="py-4 px-4 bg-green-800">Nacional</th>
-              <th className="py-4 px-4">Grand Slam</th>
-              <th className="py-4 px-4 bg-green-800">Campeonato</th>
-              <th className="py-4 px-4">Torneio</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-700 font-medium text-sm md:text-base">
-            {dadosPontuacao.map((linha) => (
-              <tr key={linha.pos} className="border-b hover:bg-gray-50 transition">
-                {/* Coluna da Posição com destaque para Top 3 */}
-                <td className="py-3 px-4 text-left font-bold">
-                  {linha.pos === 1 && <span className="text-xl">🥇 1º</span>}
-                  {linha.pos === 2 && <span className="text-xl">🥈 2º</span>}
-                  {linha.pos === 3 && <span className="text-xl">🥉 3º</span>}
-                  {linha.pos > 3 && `${linha.pos}º`}
-                </td>
-                
-                <td className="py-3 px-4 font-bold text-green-700 bg-gray-50">{linha.nacional}</td>
-                <td className="py-3 px-4">{linha.grandSlam}</td>
-                <td className="py-3 px-4 bg-gray-50">{linha.campeonato}</td>
-                <td className="py-3 px-4 text-gray-500">{linha.torneio}</td>
+      {/* Tabela com melhorias de espaço */}
+      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-center border-collapse min-w-[500px]">
+            <thead>
+              <tr className="bg-green-700 text-white uppercase text-[10px] md:text-sm font-bold tracking-wider">
+                <th className="py-3 px-2 text-left w-16 md:w-24">#</th>
+                <th className="py-3 px-2 bg-green-800">Nacional</th>
+                <th className="py-3 px-2">Grand Slam</th>
+                <th className="py-3 px-2 bg-green-800">Campeonato</th>
+                <th className="py-3 px-2">Torneio</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-gray-700 font-medium text-xs md:text-base">
+              {dadosPontuacao.map((linha) => (
+                <tr key={linha.pos} className="border-b hover:bg-green-50/50 transition">
+                  <td className="py-2.5 px-2 text-left font-bold whitespace-nowrap">
+                    {linha.pos === 1 && <span>🥇 1º</span>}
+                    {linha.pos === 2 && <span>🥈 2º</span>}
+                    {linha.pos === 3 && <span>🥉 3º</span>}
+                    {linha.pos > 3 && <span className="ml-1">{linha.pos}º</span>}
+                  </td>
+                  
+                  <td className="py-2.5 px-2 font-bold text-green-700 bg-gray-50/50 md:text-lg">{linha.nacional}</td>
+                  <td className="py-2.5 px-2 md:text-lg">{linha.grandSlam}</td>
+                  <td className="py-2.5 px-2 bg-gray-50/50 md:text-lg">{linha.campeonato}</td>
+                  <td className="py-2.5 px-2 text-gray-500 md:text-lg">{linha.torneio}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div className="mt-8 grid md:grid-cols-2 gap-4">
-        <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded">
-          <h3 className="font-bold text-green-800">Critérios de Desempate</h3>
-          <p className="text-sm text-green-800 mt-1">
-            Em caso de empate na pontuação final do ranking, o critério de desempate será o número de primeiros lugares, seguido pelo número de segundos lugares e assim sucessivamente.
+      {/* Cards informativos ajustados para mobile */}
+      <div className="mt-6 grid md:grid-cols-2 gap-3 px-1">
+        <div className="bg-green-50 border-l-4 border-green-600 p-3 rounded shadow-sm">
+          <h3 className="font-bold text-green-900 text-sm md:text-base">Critérios de Desempate</h3>
+          <p className="text-[11px] md:text-sm text-green-800 mt-1 leading-relaxed">
+            Maior número de 1º lugares, seguido de 2º lugares e assim sucessivamente.
           </p>
         </div>
-        <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded">
-          <h3 className="font-bold text-gray-800">Observação</h3>
-          <p className="text-sm text-gray-700 mt-1">
-            Pontuações fracionadas (ex: 11,2) são aplicadas em torneios de menor porte para manter a proporcionalidade do ranking.
+        <div className="bg-gray-50 border-l-4 border-gray-400 p-3 rounded shadow-sm">
+          <h3 className="font-bold text-gray-900 text-sm md:text-base">Observação</h3>
+          <p className="text-[11px] md:text-sm text-gray-700 mt-1 leading-relaxed">
+            Pontuações fracionadas mantêm a proporcionalidade entre torneios de portes diferentes.
           </p>
         </div>
       </div>
