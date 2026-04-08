@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ranking ABR - Associação Brasileira de Roundnet",
+  title: "Associação Brasileira de Roundnet",
   description: "Portal oficial da Associação Brasileira de Roundnet.",
 };
 
