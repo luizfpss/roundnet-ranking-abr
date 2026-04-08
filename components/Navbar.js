@@ -8,30 +8,33 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         
         {/* PRIMEIRA LINHA: Logo ABR e Logo Strike360 */}
-        <div className="flex justify-between items-center py-2 md:py-4">
+        {/* Ajustei o padding vertical (md:py-3) para a barra não ficar alta demais com os logos maiores */}
+        <div className="flex justify-between items-center py-2 md:py-3">
           <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative">
+            <div className="flex items-center gap-2 md:gap-4 cursor-pointer">
+              {/* Logo ABR: Aumentado de 50px para 80px no desktop */}
+              <div className="w-[30px] h-[30px] md:w-[80px] md:h-[80px] relative">
                 <Image src="/logoABR.jpg" alt="Logo ABR" fill className="object-contain" priority />
               </div>
-              <span className="font-bold text-green-700 text-sm md:text-lg whitespace-nowrap uppercase tracking-tighter md:tracking-normal">
+              {/* Texto: Aumentado de lg para 2xl no desktop para dar mais imponência */}
+              <span className="font-bold text-green-700 text-sm md:text-2xl whitespace-nowrap uppercase tracking-tight">
                 Roundnet Brasil
               </span>
             </div>
           </Link>
 
-          {/* Logo Strike360 Oficial (Substituindo o botão preto) */}
+          {/* Logo Strike360: Aumentado para w-44 no desktop para equilibrar com o logo da ABR */}
           <a 
             href="https://www.strike360.com.br/" 
             target="_blank" 
             className="hover:scale-105 transition-transform shrink-0 ml-2 md:ml-4 flex items-center"
           >
-            <div className="relative w-20 h-8 md:w-32 md:h-12">
+            <div className="relative w-20 h-8 md:w-44 md:h-16">
               <Image 
                 src="/logo-strike.png" 
                 alt="Strike360" 
                 fill
-                className="object-contain"
+                className="object-contain px-1"
                 priority
               />
             </div>
@@ -40,7 +43,8 @@ export default function Navbar() {
 
         {/* SEGUNDA LINHA: Links com scroll lateral */}
         <div className="w-full overflow-x-auto no-scrollbar border-t border-gray-50 md:border-none">
-          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center items-center gap-5 md:gap-8 py-3 text-[10px] md:text-sm font-bold text-gray-500 pr-10">
+          {/* Aumentei um pouco o gap no desktop (md:gap-10) para aproveitar o espaço da tela larga */}
+          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center items-center gap-5 md:gap-10 py-3 text-[10px] md:text-sm font-bold text-gray-500 pr-10">
             <Link href="/" className="hover:text-green-600 transition whitespace-nowrap uppercase">Ranking</Link>
             <Link href="/pontuacao" className="hover:text-green-600 transition whitespace-nowrap uppercase">Pontuação</Link>
             <Link href="/comunidades" className="hover:text-green-600 transition whitespace-nowrap uppercase">Comunidades</Link>
