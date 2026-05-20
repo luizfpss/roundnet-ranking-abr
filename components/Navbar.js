@@ -9,9 +9,9 @@ export default function Navbar() {
         
         {/* PRIMEIRA LINHA: Logo ABR (Strike360 Oculto temporariamente) */}
         <div className="flex justify-between items-center py-2 md:py-3">
+          {/* Link para a Home Page (História e Carrossel) */}
           <Link href="/">
             <div className="flex items-center gap-2 md:gap-4 cursor-pointer">
-              {/* Logo ABR: Mantido em 80px no desktop */}
               <div className="w-[30px] h-[30px] md:w-[80px] md:h-[80px] relative">
                 <Image src="/logoABR.jpg" alt="Logo ABR" fill className="object-contain" priority />
               </div>
@@ -44,7 +44,9 @@ export default function Navbar() {
         {/* SEGUNDA LINHA: Links com scroll lateral */}
         <div className="w-full overflow-x-auto no-scrollbar border-t border-gray-50 md:border-none">
           <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center items-center gap-5 md:gap-10 py-3 text-[10px] md:text-sm font-bold text-gray-500 pr-10">
-            <Link href="/" className="hover:text-green-600 transition whitespace-nowrap uppercase">Ranking</Link>
+            {/* MUDANÇA AQUI: Link agora aponta para a pasta /ranking */}
+            <Link href="/ranking" className="hover:text-green-600 transition whitespace-nowrap uppercase">Ranking</Link>
+            
             <Link href="/pontuacao" className="hover:text-green-600 transition whitespace-nowrap uppercase">Pontuação</Link>
             <Link href="/comunidades" className="hover:text-green-600 transition whitespace-nowrap uppercase">Comunidades</Link>
             <Link href="/eventos" className="hover:text-green-600 transition whitespace-nowrap uppercase">Eventos</Link>
